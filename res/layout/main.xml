@@ -11,5 +11,11 @@
         android:clickable="true"
         android:apiKey="09zors4y_nVc65Nmo9_1c2K9BdRpmRFE8pe0VDg"
         />
+        
+     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" 
+        />
 
 </LinearLayout>

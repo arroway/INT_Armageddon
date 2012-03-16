@@ -1,4 +1,4 @@
-package org.tsp.android.MapExample;
+package org.tsp.android;
 
 import org.tsp.android.R;
 

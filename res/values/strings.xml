@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MapExampleActivity!</string>
-    <string name="app_name">MapExample</string>
+    <string name="hello">INT Post-Armageddon: fighting for your survival</string>
+    <string name="app_name">INT Post-Armageddon</string>
 
 </resources>

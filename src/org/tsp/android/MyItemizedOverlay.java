@@ -1,4 +1,4 @@
-package org.tsp.android.MapExample;
+package org.tsp.android;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package org.tsp.android.MapExample;
+package org.tsp.android;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -24,7 +24,7 @@ import android.media.ExifInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MapExampleActivity extends MapActivity {
+public class MapArmageddonActivity extends MapActivity {
 	
 	private final String search_path = "/sdcard/"; 
     
@@ -49,8 +49,8 @@ public class MapExampleActivity extends MapActivity {
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(images);
         
-        //OverlayItem item = new OverlayItem(new GeoPoint(48625119, 2442082), "Item 1", "Item 1 description");
-        //images.addOverlay(item);
+        OverlayItem item = new OverlayItem(new GeoPoint(48625119, 2442082), "Item 1", "Item 1 description");
+        images.addOverlay(item);
         
         File dir = new File(search_path);
         String[] image_files = dir.list(new FilenameFilter() {
