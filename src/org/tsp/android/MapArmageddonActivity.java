@@ -49,7 +49,7 @@ public class MapArmageddonActivity extends MapActivity {
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(images);
         
-        OverlayItem item = new OverlayItem(new GeoPoint(48625119, 2442082), "Item 1", "Item 1 description");
+        OverlayItem item = new OverlayItem(new GeoPoint(48625119, 2442082), "Start", "Starting point");
         images.addOverlay(item);
         
         File dir = new File(search_path);
