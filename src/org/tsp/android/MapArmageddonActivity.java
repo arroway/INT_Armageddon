@@ -5,24 +5,18 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
 
-import org.tsp.android.R;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ExifInterface;
+import android.os.Bundle;
 
 import com.google.android.maps.GeoPoint;
-import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
-
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.ExifInterface;
-import android.os.Bundle;
-import android.widget.Toast;
 
 public class MapArmageddonActivity extends MapActivity {
 	
@@ -49,8 +43,8 @@ public class MapArmageddonActivity extends MapActivity {
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(images);
         
-        OverlayItem item = new OverlayItem(new GeoPoint(48625119, 2442082), "Start", "Starting point");
-        images.addOverlay(item);
+        OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Your mission, if you accept it...", "View your mission");
+        images.addOverlay(itemMission);
         
         File dir = new File(search_path);
         String[] image_files = dir.list(new FilenameFilter() {

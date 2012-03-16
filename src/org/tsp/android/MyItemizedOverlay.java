@@ -3,12 +3,12 @@ package org.tsp.android;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.sax.StartElementListener;
+import android.view.LayoutInflater;
+import android.view.View;
 
-import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
@@ -53,11 +53,22 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         
     // Handle tap events on overlay icons
     @Override
-    protected boolean onTap(int i){
+    protected boolean onTap(int index){
             
         // To complete
     	// Show image in the other activity
-    	
+    	OverlayItem item = myOverlays.get(index);
+    	AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+    	dialog.setTitle(item.getTitle());
+    	//dialog.setMessage(item.getSnippet());
+        LayoutInflater li = mContext.getLayoutInflater();
+        View view_mission = li.inflate(R.layout.view_mission, null);
+        dialog.setView(view_mission);
+    	dialog.setPositiveButton("Back", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int id) {
+            dialog.dismiss();}
+    	});
+    	dialog.show();    	
         return(true);
     }
 
