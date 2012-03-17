@@ -50,8 +50,31 @@ public class MapArmageddonActivity extends MapActivity {
         OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Start mission", "View your mission");
         images.addOverlay(itemMission);
         
-        OverlayItem itemClue1 = new OverlayItem(new GeoPoint(48625300, 2442082), "First clue", "View first clue");
+        /* TODO:
+         * Display only when the player is in near the location
+         */
+        OverlayItem itemClue1 = new OverlayItem(new GeoPoint(48625500, 2442282), "First clue", "View first clue");
         images.addOverlay(itemClue1);
+        
+        OverlayItem itemClue2 = new OverlayItem(new GeoPoint(4862500, 2442482), "First clue", "View first clue");
+        images.addOverlay(itemClue2);
+        
+        OverlayItem itemClue3 = new OverlayItem(new GeoPoint(48625300, 2442682), "First clue", "View first clue");
+        images.addOverlay(itemClue3);
+        
+        OverlayItem itemClue4 = new OverlayItem(new GeoPoint(48625300, 2442882), "First clue", "View first clue");
+        images.addOverlay(itemClue4);
+        
+        OverlayItem itemClue5 = new OverlayItem(new GeoPoint(48625900, 2442882), "First clue", "View first clue");
+        images.addOverlay(itemClue5);
+        
+        
+        /*
+         * Display only when all the clues have been found
+         */
+         
+        OverlayItem itemFinal = new OverlayItem(new GeoPoint(48625300, 2442082), "First clue", "View first clue");
+        images.addOverlay(itemFinal);
        
         
         File dir = new File(search_path);

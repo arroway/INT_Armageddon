@@ -23,6 +23,13 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     
     private static final int START_MISSION_DIALOG = 0;
     private static final int VIEW_CLUE_1 = 1;
+    private static final int VIEW_CLUE_2 = 2;
+    private static final int VIEW_CLUE_3 = 3;
+    private static final int VIEW_CLUE_4 = 4;
+    private static final int VIEW_CLUE_5 = 5;
+
+
+
 
     public MyItemizedOverlay(Activity context, Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
@@ -64,24 +71,27 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	
     	AlertDialog.Builder builder;
     	builder = new AlertDialog.Builder(mContext);
-    	builder.setPositiveButton("Let's go, O'Neil!", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface alert, int id) {
-            alert.dismiss();}
-    	});
+    	AlertDialog alert;    
     	
-    	builder.setNegativeButton("I'm afraid!", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface alert, int id) {
-            alert.dismiss();
-            Toast.makeText(mContext, "Too bad, you die under acid rains and nuclear radiations. Bye Bye!", Toast.LENGTH_LONG).show();
-            mContext.finish();
-            }
-    	});
-    	AlertDialog alert = builder.create();
-            
     	switch(index){
     	
     		case START_MISSION_DIALOG:
-       
+           			
+    			builder.setPositiveButton("Let's go, O'Neil!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    	    	
+    	    	builder.setNegativeButton("I'm afraid!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();
+    	            Toast.makeText(mContext, "Too bad, you die under acid rains and nuclear radiations. Bye Bye!", Toast.LENGTH_LONG).show();
+    	            mContext.finish();
+    	            }
+    	    	});
+    	    	
+    	    	alert = builder.create();
+
     			String missionStr = "2013: the world was overhelmed by the Armageddon in late 2012. " +
     					"Sole survivors in a post-apocalyptic land, your mission is simple: staying alive." + 
     					"But one hope remains: finding the Stargate to escape this world." +
@@ -98,12 +108,79 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
          		return(true);
     					
     		case VIEW_CLUE_1:
+    			
+    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    			
+    	    	alert = builder.create();
+
     			String clueStr_1 = "This is the first clue";
     			alert.setTitle("First clue");
     			alert.setMessage(clueStr_1);
     			alert.show();
     			return (true);
     			
+    		case VIEW_CLUE_2:
+    			
+    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    			
+    	    	alert = builder.create();
+
+    			String clueStr_2 = "This is the second clue";
+    			alert.setTitle("First clue");
+    			alert.setMessage(clueStr_2);
+    			alert.show();
+    			return (true);	
+
+    		case VIEW_CLUE_3:
+    			
+    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    			
+    	    	alert = builder.create();
+
+    			String clueStr_3 = "This is the third clue";
+    			alert.setTitle("First clue");
+    			alert.setMessage(clueStr_3);
+    			alert.show();
+    			return (true);
+    			
+    		case VIEW_CLUE_4:
+    			
+    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    			
+    	    	alert = builder.create();
+
+    			String clueStr_4 = "This is the fourth clue";
+    			alert.setTitle("First clue");
+    			alert.setMessage(clueStr_4);
+    			alert.show();
+    			return (true);		
+    			
+    		case VIEW_CLUE_5:
+    			
+    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    			
+    	    	alert = builder.create();
+
+    			String clueStr_5 = "This is the fifth clue";
+    			alert.setTitle("First clue");
+    			alert.setMessage(clueStr_5);
+    			alert.show();
+    			return (true);    	
     	}
     	
     	return(true);
