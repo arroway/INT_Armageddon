@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
@@ -63,9 +64,17 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	
     	AlertDialog.Builder builder;
     	builder = new AlertDialog.Builder(mContext);
-    	builder.setPositiveButton("Back", new DialogInterface.OnClickListener(){
+    	builder.setPositiveButton("Let's go, O'Neil!", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface alert, int id) {
             alert.dismiss();}
+    	});
+    	
+    	builder.setNegativeButton("I'm afraid!", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface alert, int id) {
+            alert.dismiss();
+            Toast.makeText(mContext, "Too bad, you die under acid rains and nuclear radiations. Bye Bye!", Toast.LENGTH_LONG).show();
+            mContext.finish();
+            }
     	});
     	AlertDialog alert = builder.create();
             
