@@ -5,15 +5,24 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
 
+
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationListener;
 import android.media.ExifInterface;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -30,6 +39,18 @@ public class MapArmageddonActivity extends MapActivity {
 	private MapController mController;
 	private MyItemizedOverlay images;
 	
+	
+	/*
+	 * GPS - location
+	 * 
+	 */
+	private String provider;
+	private LocationManager myLocationManager;
+	private LocationListener myLocationListener;
+	private int lat;
+	private int lng;
+
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +63,30 @@ public class MapArmageddonActivity extends MapActivity {
         mController = m_mapView.getController();
         mController.animateTo(new GeoPoint( 48625002, 2442962));
         mController.setZoom(18);
+        
+        myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        myLocationListener = new myLocationListener(this);
+		Criteria criteria = new Criteria();
+		provider = myLocationManager.getBestProvider(criteria, false);
+		
+		Location location = myLocationManager.getLastKnownLocation(provider);
+		myLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+				0, myLocationListener);
+		
+		// Initialize the location fields
+		if (location != null) {
+			System.out.println("Provider " + provider + " has been selected.");
+			lat = (int) (location.getLatitude());
+			lng = (int) (location.getLongitude());
+			Toast.makeText(this, "Longitude: " + lng + " - Latitude: " + lat,
+					Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(this, "No provider available",
+					Toast.LENGTH_SHORT).show();
+		
+		} 
+
+       // myLocationListener = new LocationListener();
         
         List<Overlay> map_overlays = m_mapView.getOverlays();
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
@@ -109,12 +154,42 @@ public class MapArmageddonActivity extends MapActivity {
 		}
     }
 
+    
+    public void setLat(int lat){
+    	this.lat = lat;
+    }
+    
+    public void setLng(int lng){
+    	this.lng = lng;
+    }
+    
+    public int getLat(){
+    	return this.lat;
+    }
+    
+    public int getLng(){
+    	return this.lng;
+    }
+    
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
+	/* Request updates at startup */
+	@Override
+	protected void onResume() {
+		super.onResume();
+		myLocationManager.requestLocationUpdates(provider, (long) 400, (float) 1, myLocationListener);
+	}
+
+	/* Remove the locationlistener updates when Activity is paused */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		myLocationManager.removeUpdates(myLocationListener);
+	}
 	
 	
 	/*
