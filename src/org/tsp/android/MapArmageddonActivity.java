@@ -43,8 +43,12 @@ public class MapArmageddonActivity extends MapActivity {
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(images);
         
-        OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Your mission, if you accept it...", "View your mission");
+        OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Start mission", "View your mission");
         images.addOverlay(itemMission);
+        
+        OverlayItem itemClue1 = new OverlayItem(new GeoPoint(48625300, 2442082), "First clue", "View first clue");
+        images.addOverlay(itemClue1);
+       
         
         File dir = new File(search_path);
         String[] image_files = dir.list(new FilenameFilter() {
