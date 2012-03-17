@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         
     private ArrayList<OverlayItem> myOverlays;
     private Activity mContext; 
-
+    
     public MyItemizedOverlay(Activity context, Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
         mContext = context;
@@ -56,63 +57,39 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         
     // Handle tap events on overlay icons
     @Override
-    protected boolean onTap(int index){
-            
-        // To complete
-    	// Show image in the other activity
-    /*	OverlayItem item = myOverlays.get(index);
-    	AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
-    	dialog.setTitle(item.getTitle());
-        LayoutInflater li = mContext.getLayoutInflater();
-        View view_mission = li.inflate(R.layout.view_mission, null);
-        dialog.setView(view_mission);
+    protected boolean onTap(int index){       
     	
-    	dialog.setPositiveButton("Back", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int id) {
-            dialog.dismiss();}
-    	});
-    	
-    	dialog.show();*/
-    	
+    	OverlayItem item = myOverlays.get(index);
+    	String title = item.getTitle();
+    	if (title.matches("Start")){
+    		Intent intentStart = new Intent(mContext, ImageViewMissionActivity.class);
+			mContext.startActivity(intentStart);
 
-    	
-    	/*AlertDialog.Builder builder;
-    	AlertDialog alertDialog;
-
-    	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
-    	View layout = inflater.inflate(R.layout.view_mission,
-    	                               null);
-
-    	TextView text = (TextView) layout.findViewById(R.id.text_view);*/
+    	}
+    	/*
     	String missionStr = "2013: the world was overhelmed by the Armageddon in late 2012. " +
-    	"Sole survivors in a post-apocalyptic land, your mission is simple: staying alive." + 
-        "But one hope remains: finding the Stargate to escape this world." +
-        "Rumors say that the Stargate may lay on the campus of Telecom SudParis." +
-        "You must find it so you can leave this no-man land...  ";
-    	/*text.setText(mission);
-    	ImageView image = (ImageView) layout.findViewById(R.id.img_view);
-    	image.setImageResource(R.drawable.mission);
-
-    	builder = new AlertDialog.Builder(mContext);
-    	builder.setView(layout);
-    	alertDialog = builder.create();
-        alertDialog.show();*/
+    				"Sole survivors in a post-apocalyptic land, your mission is simple: staying alive." + 
+    				"But one hope remains: finding the Stargate to escape this world." +
+    				"Rumors say that the Stargate may lay on the campus of Telecom SudParis." +
+    				"You must find it so you can leave this no-man land...  ";
     	
-    	AlertDialog.Builder builder;
-    	builder = new AlertDialog.Builder(mContext);
-    	builder.setPositiveButton("Back", new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface alert, int id) {
-            alert.dismiss();}
-    	});
-    	AlertDialog alert = builder.create();
-    	alert.setTitle("Your mission,if you accept it...");
-    	alert.setMessage(missionStr);
-    	ImageView image = new ImageView(mContext);
-    	image.setImageResource(R.drawable.mission);
-    	alert.setView(image);
-    	alert.show();
+    		AlertDialog.Builder builder;
+    		builder = new AlertDialog.Builder(mContext);*/
+    		//builder.setPositiveButton("Back", new DialogInterface.OnClickListener(){
+    		//	public void onClick(DialogInterface alert, int id) {
+    		//		alert.dismiss();}
+    		//});
+    		/*AlertDialog alert = builder.create();
+    		
+    		alert.setMessage(missionStr);
+    		ImageView image = new ImageView(mContext);
+    		image.setImageResource(R.drawable.mission);
+    		alert.setView(image);
+    		alert.show();*/
+    	
+    		
 
-        return(true);
+     return(true);
     }
 
     // Returns present number of items in list

@@ -25,7 +25,7 @@ public class MapArmageddonActivity extends MapActivity {
 	private MapView m_mapView;
 	private MapController mController;
 	private MyItemizedOverlay images;
-	
+		
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class MapArmageddonActivity extends MapActivity {
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(images);
         
-        OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Your mission, if you accept it...", "View your mission");
+        OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Start", "");
         images.addOverlay(itemMission);
         
         File dir = new File(search_path);
