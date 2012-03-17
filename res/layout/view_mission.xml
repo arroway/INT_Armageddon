@@ -10,12 +10,6 @@
 	    android:layout_gravity="center"
 		android:layout_centerHorizontal="true">
 	</ImageView>
-	
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mission" 
-   />
+
     
 </LinearLayout>

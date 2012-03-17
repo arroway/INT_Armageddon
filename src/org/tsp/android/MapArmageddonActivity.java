@@ -5,11 +5,15 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -87,4 +91,33 @@ public class MapArmageddonActivity extends MapActivity {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
+	
+	/*
+	 * 
+	 * Menu
+	 * 
+	 */
+	
+	@Override
+	public boolean onCreateOptionsMenu (Menu menu){
+		super.onCreateOptionsMenu(menu);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_map, menu);
+		return true;
+	}
+	
+	@Override 
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch(item.getItemId()){
+			case R.id.menu_exit:
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	 
 }
