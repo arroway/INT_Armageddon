@@ -72,6 +72,7 @@ public class MapArmageddonActivity extends MapActivity {
         
         OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Start mission", "View your mission");
         images.addOverlay(itemMission);
+        Toast.makeText(this, "Click on the blue item to discover your mission", Toast.LENGTH_LONG).show();
         
         myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         myLocationListener = new myLocationListener(this, images);
