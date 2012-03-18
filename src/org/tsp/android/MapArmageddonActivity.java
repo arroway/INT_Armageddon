@@ -46,6 +46,8 @@ public class MapArmageddonActivity extends MapActivity {
 	private LocationListener myLocationListener;
 	private int lat;
 	private int lng;
+	
+	private int score = 0;
 
 	
     /** Called when the activity is first created. */
@@ -90,8 +92,7 @@ public class MapArmageddonActivity extends MapActivity {
 
 		} else {
 			Toast.makeText(this, "No provider available",
-					Toast.LENGTH_SHORT).show();
-		
+					Toast.LENGTH_SHORT).show();	
 		}         
         
         /*
@@ -149,6 +150,14 @@ public class MapArmageddonActivity extends MapActivity {
     
     public int getLng(){
     	return this.lng;
+    }
+    
+    public int getScore(){
+    	return this.score;
+    }
+    
+    public void incrementScore(){
+    	this.score++;
     }
     
 	@Override

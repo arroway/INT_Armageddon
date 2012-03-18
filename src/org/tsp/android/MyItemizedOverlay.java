@@ -15,7 +15,7 @@ import com.google.android.maps.OverlayItem;
 public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         
     private ArrayList<OverlayItem> myOverlays;
-    private Activity mContext; 
+    private MapArmageddonActivity mContext; 
     
     private static final int START_MISSION_DIALOG = 0;
     private static final int VIEW_CLUE_1 = 1;
@@ -25,7 +25,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     private static final int VIEW_CLUE_5 = 5;
 
 
-    public MyItemizedOverlay(Activity context, Drawable defaultMarker) {
+    public MyItemizedOverlay(MapArmageddonActivity context, Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
         mContext = context;
         myOverlays = new ArrayList<OverlayItem>();
@@ -67,6 +67,11 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	builder = new AlertDialog.Builder(mContext);
     	AlertDialog alert;    
     	
+    	/*
+    	 * Clues are not linked with a special place. The are displayed in the same order
+    	 * whatever the path of the player is.  
+    	 *  
+    	 */
     	switch(index){
     	
     		case START_MISSION_DIALOG:
@@ -176,8 +181,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     			alert.show();
     			return (true);    	
     	}
-    	
-    	return(true);
+    	return (true);
     }
 
     // Returns present number of items in list
