@@ -48,7 +48,9 @@ public class MapArmageddonActivity extends MapActivity {
 	private int lat;
 	private int lng;
 	
+	//private int score = 5;
 	private int score = 0;
+	private boolean finalEnigma = false;
 
 	
     /** Called when the activity is first created. */
@@ -103,13 +105,14 @@ public class MapArmageddonActivity extends MapActivity {
 		if (this.score == 5){			
 			Drawable iconFinal = getResources().getDrawable(R.drawable.stargate);
 			iconFinal.setBounds(0, 0, iconFinal.getIntrinsicWidth(), iconFinal.getIntrinsicHeight());
-			OverlayItem itemFinal = new OverlayItem(new GeoPoint(48625000, 2442082), "First clue", "View first clue");
+			OverlayItem itemFinal = new OverlayItem(new GeoPoint(48627000, 2441082), "First clue", "View first clue");
 			itemFinal.setMarker(iconFinal);
 			images.addOverlay(itemFinal);
 	    	Toast.makeText(this, "Click on the stargate!", Toast.LENGTH_SHORT).show();
+	    	this.finalEnigma = true;
+	    	
 		}
-   
-        
+           
         File dir = new File(search_path);
         String[] image_files = dir.list(new FilenameFilter() {
 		
@@ -165,6 +168,10 @@ public class MapArmageddonActivity extends MapActivity {
     
     public void incrementScore(){
     	this.score++;
+    }
+    
+    public boolean getFinalEnigma(){
+    	return this.finalEnigma;
     }
     
 	@Override

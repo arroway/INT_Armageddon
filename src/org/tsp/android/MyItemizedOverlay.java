@@ -2,9 +2,9 @@ package org.tsp.android;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,11 +18,13 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     private MapArmageddonActivity mContext; 
     
     private static final int START_MISSION_DIALOG = 0;
+    //private static final int VIEW_CLUE_1 = 6;
     private static final int VIEW_CLUE_1 = 1;
     private static final int VIEW_CLUE_2 = 2;
     private static final int VIEW_CLUE_3 = 3;
     private static final int VIEW_CLUE_4 = 4;
     private static final int VIEW_CLUE_5 = 5;
+    //private static final int FINAL = 1;
     private static final int FINAL = 6;
 
 
@@ -185,17 +187,43 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     			
     		case FINAL:
     			
-    			builder.setPositiveButton("Let's go!", new DialogInterface.OnClickListener(){
-    	            public void onClick(DialogInterface alert, int id) {
-    	            alert.dismiss();}
-    	    	});
+    			if ((mContext.getLng() > 48626950) &&
+    	                (mContext.getLng() < 48627050) &&
+    	                (mContext.getLat() > 2440100) &&
+    	                (mContext.getLat() < 2441182) &&
+    	                mContext.getFinalEnigma()){
+    				
+    				builder.setPositiveButton("Solve the enigma now!", new DialogInterface.OnClickListener(){
+    	        		public void onClick(DialogInterface alert, int id) {
+    	                    Intent intentEnigma = new Intent(mContext, EnigmaActivity.class);
+    	       		        mContext.startActivityForResult(intentEnigma, 1);
+    	        		//	alert.dismiss();
+    	        		}
+    	        	});
+    				
+    				builder.setNegativeButton("Back to the map", new DialogInterface.OnClickListener(){
+    	        		public void onClick(DialogInterface alert, int id) {
+    	        			alert.dismiss();
+    	        		}
+    	        	});
+    				alert = builder.create();
+    				alert.show();	
+    				
+    	        } else {
+    	        
+    	        	builder.setPositiveButton("Let's go!", new DialogInterface.OnClickListener(){
+    	        		public void onClick(DialogInterface alert, int id) {
+    	        			alert.dismiss();}
+    	        	});
     			
-    			alert = builder.create();
-    			String finalStr = "Congratulations, you found the 5 clues. Now you have to go at the location " +
-    					"indicated by this item to be able to solve the enigma.";
-    			alert.setTitle("To solve the enigma...");
-    			alert.setMessage(finalStr);
-    			alert.show();
+    	        	alert = builder.create();
+    	        	String finalStr = "Congratulations, you found the 5 clues. Now you have to go at the location " +
+    	        			"indicated by this item to be able to solve the enigma.";
+    	        	alert.setTitle("To solve the enigma...");
+    			
+    	        	alert.setMessage(finalStr); 
+    	        	alert.show();
+    			}
     			return (true); 
     			
     	}

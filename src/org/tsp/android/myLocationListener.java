@@ -6,6 +6,7 @@ import com.google.android.maps.OverlayItem;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -35,6 +36,11 @@ public class myLocationListener implements LocationListener {
 		Toast.makeText(mContext, "Longitude: " + mContext.getLng() + " - Latitude: " + mContext.getLat(),
 				Toast.LENGTH_SHORT).show();
 		
+		/*
+		 * Display the clues 
+		 * 
+		 */
+		 
         if( (mContext.getLng() > 48625800) &&
         	(mContext.getLng() < 48626000) &&
         	(mContext.getLat() > 2442182) &&
@@ -106,7 +112,24 @@ public class myLocationListener implements LocationListener {
                 			Toast.LENGTH_SHORT).show();  
     		clue_discover_5 = true;
 			mContext.incrementScore();
-             }   
+            }   
+         
+         /*
+          * Display final activity 
+          *
+          */
+         
+         if( (mContext.getLng() > 48626950) &&
+             (mContext.getLng() < 48627050) &&
+             (mContext.getLat() > 2440100) &&
+             (mContext.getLat() < 2441182) &&
+             mContext.getFinalEnigma() ){
+                        	
+            // Intent intentEnigma = new Intent(mContext, EnigmaActivity.class);
+		    // mContext.startActivityForResult(intentEnigma, 1);
+
+           
+          } 
 
 	}
 
