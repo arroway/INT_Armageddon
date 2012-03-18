@@ -23,6 +23,8 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     private static final int VIEW_CLUE_3 = 3;
     private static final int VIEW_CLUE_4 = 4;
     private static final int VIEW_CLUE_5 = 5;
+    private static final int FINAL = 6;
+
 
 
     public MyItemizedOverlay(MapArmageddonActivity context, Drawable defaultMarker) {
@@ -179,7 +181,23 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     			alert.setTitle("Fifth clue");
     			alert.setMessage(clueStr_5);
     			alert.show();
-    			return (true);    	
+    			return (true);    
+    			
+    		case FINAL:
+    			
+    			builder.setPositiveButton("Let's go!", new DialogInterface.OnClickListener(){
+    	            public void onClick(DialogInterface alert, int id) {
+    	            alert.dismiss();}
+    	    	});
+    			
+    			alert = builder.create();
+    			String finalStr = "Congratulations, you found the 5 clues. Now you have to go at the location " +
+    					"indicated by this item to be able to solve the enigma.";
+    			alert.setTitle("To solve the enigma...");
+    			alert.setMessage(finalStr);
+    			alert.show();
+    			return (true); 
+    			
     	}
     	return (true);
     }

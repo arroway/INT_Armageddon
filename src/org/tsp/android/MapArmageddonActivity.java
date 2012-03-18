@@ -10,6 +10,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -99,9 +100,15 @@ public class MapArmageddonActivity extends MapActivity {
          * Display only when all the clues have been found
          */
          
-       // OverlayItem itemFinal = new OverlayItem(new GeoPoint(48625900, 2442982), "First clue", "View first clue");
-       // images.addOverlay(itemFinal);
-       
+		if (this.score == 5){			
+			Drawable iconFinal = getResources().getDrawable(R.drawable.stargate);
+			iconFinal.setBounds(0, 0, iconFinal.getIntrinsicWidth(), iconFinal.getIntrinsicHeight());
+			OverlayItem itemFinal = new OverlayItem(new GeoPoint(48625000, 2442082), "First clue", "View first clue");
+			itemFinal.setMarker(iconFinal);
+			images.addOverlay(itemFinal);
+	    	Toast.makeText(this, "Click on the stargate!", Toast.LENGTH_SHORT).show();
+		}
+   
         
         File dir = new File(search_path);
         String[] image_files = dir.list(new FilenameFilter() {
