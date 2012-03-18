@@ -6,11 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.maps.ItemizedOverlay;
@@ -27,8 +23,6 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     private static final int VIEW_CLUE_3 = 3;
     private static final int VIEW_CLUE_4 = 4;
     private static final int VIEW_CLUE_5 = 5;
-
-
 
 
     public MyItemizedOverlay(Activity context, Drawable defaultMarker) {
@@ -132,7 +126,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	    	alert = builder.create();
 
     			String clueStr_2 = "This is the second clue";
-    			alert.setTitle("First clue");
+    			alert.setTitle("Second clue");
     			alert.setMessage(clueStr_2);
     			alert.show();
     			return (true);	
@@ -147,7 +141,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	    	alert = builder.create();
 
     			String clueStr_3 = "This is the third clue";
-    			alert.setTitle("First clue");
+    			alert.setTitle("Third clue");
     			alert.setMessage(clueStr_3);
     			alert.show();
     			return (true);
@@ -162,7 +156,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	    	alert = builder.create();
 
     			String clueStr_4 = "This is the fourth clue";
-    			alert.setTitle("First clue");
+    			alert.setTitle("Fourth clue");
     			alert.setMessage(clueStr_4);
     			alert.show();
     			return (true);		
@@ -177,7 +171,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	    	alert = builder.create();
 
     			String clueStr_5 = "This is the fifth clue";
-    			alert.setTitle("First clue");
+    			alert.setTitle("Fifth clue");
     			alert.setMessage(clueStr_5);
     			alert.show();
     			return (true);    	

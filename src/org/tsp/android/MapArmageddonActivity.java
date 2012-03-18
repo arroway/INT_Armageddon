@@ -7,7 +7,6 @@ import java.util.List;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,11 +16,9 @@ import android.location.LocationManager;
 import android.location.LocationListener;
 import android.media.ExifInterface;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
@@ -61,32 +58,8 @@ public class MapArmageddonActivity extends MapActivity {
         m_mapView.setBuiltInZoomControls(true);
         
         mController = m_mapView.getController();
-        mController.animateTo(new GeoPoint( 48625002, 2442962));
+        mController.animateTo(new GeoPoint(48625002, 2442962));
         mController.setZoom(18);
-        
-        myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        myLocationListener = new myLocationListener(this);
-		Criteria criteria = new Criteria();
-		provider = myLocationManager.getBestProvider(criteria, false);
-		
-		Location location = myLocationManager.getLastKnownLocation(provider);
-		myLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
-				0, myLocationListener);
-		
-		// Initialize the location fields
-		if (location != null) {
-			System.out.println("Provider " + provider + " has been selected.");
-			lat = (int) (location.getLatitude());
-			lng = (int) (location.getLongitude());
-			Toast.makeText(this, "Longitude: " + lng + " - Latitude: " + lat,
-					Toast.LENGTH_SHORT).show();
-		} else {
-			Toast.makeText(this, "No provider available",
-					Toast.LENGTH_SHORT).show();
-		
-		} 
-
-       // myLocationListener = new LocationListener();
         
         List<Overlay> map_overlays = m_mapView.getOverlays();
         images = new MyItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
@@ -95,31 +68,38 @@ public class MapArmageddonActivity extends MapActivity {
         OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Start mission", "View your mission");
         images.addOverlay(itemMission);
         
-        /* TODO:
-         * Display only when the player is in near the location
-         */
-        OverlayItem itemClue1 = new OverlayItem(new GeoPoint(48625500, 2442282), "First clue", "View first clue");
-        images.addOverlay(itemClue1);
-        
-        OverlayItem itemClue2 = new OverlayItem(new GeoPoint(4862500, 2442482), "First clue", "View first clue");
-        images.addOverlay(itemClue2);
-        
-        OverlayItem itemClue3 = new OverlayItem(new GeoPoint(48625300, 2442682), "First clue", "View first clue");
-        images.addOverlay(itemClue3);
-        
-        OverlayItem itemClue4 = new OverlayItem(new GeoPoint(48625300, 2442882), "First clue", "View first clue");
-        images.addOverlay(itemClue4);
-        
-        OverlayItem itemClue5 = new OverlayItem(new GeoPoint(48625900, 2442882), "First clue", "View first clue");
-        images.addOverlay(itemClue5);
-        
+        myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        myLocationListener = new myLocationListener(this, images);
+		Criteria criteria = new Criteria();
+		provider = myLocationManager.getBestProvider(criteria, false);
+		
+		
+		//add alert dialog with "waiting for location"
+		Location location = myLocationManager.getLastKnownLocation(provider);
+		myLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+				0, myLocationListener);
+		
+		// Initialize the location fields
+		if (location != null) {
+			System.out.println("Provider " + provider + " has been selected.");
+			lat = (int) (location.getLatitude() * 1000000);
+			lng = (int) (location.getLongitude() * 1000000);
+			Toast.makeText(this, "Longitude: " + lng + " - Latitude: " + lat,
+					Toast.LENGTH_SHORT).show();
+	       /*mController.setCenter(new GeoPoint(lat, lng));*/
+
+		} else {
+			Toast.makeText(this, "No provider available",
+					Toast.LENGTH_SHORT).show();
+		
+		}         
         
         /*
          * Display only when all the clues have been found
          */
          
-        OverlayItem itemFinal = new OverlayItem(new GeoPoint(48625300, 2442082), "First clue", "View first clue");
-        images.addOverlay(itemFinal);
+       // OverlayItem itemFinal = new OverlayItem(new GeoPoint(48625900, 2442982), "First clue", "View first clue");
+       // images.addOverlay(itemFinal);
        
         
         File dir = new File(search_path);
