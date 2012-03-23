@@ -36,7 +36,7 @@ public class MapArmageddonActivity extends MapActivity {
 	private MapView m_mapView;
 	private MapController mController;
 	private MyItemizedOverlay images;
-	
+	private MyPathItemizedOverlay pathImages;
 	
 	/*
 	 * GPS - location
@@ -73,9 +73,12 @@ public class MapArmageddonActivity extends MapActivity {
         OverlayItem itemMission = new OverlayItem(new GeoPoint(48625119, 2442082), "Start mission", "View your mission");
         images.addOverlay(itemMission);
         Toast.makeText(this, "Click on the blue item to discover your mission", Toast.LENGTH_LONG).show();
+    
+        pathImages = new MyPathItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
+        map_overlays.add(pathImages);
         
         myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        myLocationListener = new myLocationListener(this, images);
+        myLocationListener = new myLocationListener(this, images, pathImages);
 		Criteria criteria = new Criteria();
 		provider = myLocationManager.getBestProvider(criteria, false);
 		
@@ -98,7 +101,7 @@ public class MapArmageddonActivity extends MapActivity {
 			Toast.makeText(this, "No provider available",
 					Toast.LENGTH_SHORT).show();	
 		}         
-        
+		
         /*
          * Display only when all the clues have been found
          */
@@ -114,7 +117,7 @@ public class MapArmageddonActivity extends MapActivity {
 	    	
 		}
            
-        File dir = new File(search_path);
+    /*    File dir = new File(search_path);
         String[] image_files = dir.list(new FilenameFilter() {
 		
 			@Override
@@ -143,7 +146,7 @@ public class MapArmageddonActivity extends MapActivity {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		} 
-		}
+		}*/
     }
 
     

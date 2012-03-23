@@ -82,7 +82,11 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
            			
     			builder.setPositiveButton("Let's go, O'Neil!", new DialogInterface.OnClickListener(){
     	            public void onClick(DialogInterface alert, int id) {
-    	            alert.dismiss();}
+    	            alert.dismiss();
+    	    		//hint
+    	    		Toast.makeText(mContext, "Hint! Click on the map to show actualized path",
+    	    				Toast.LENGTH_LONG).show();
+    	            }
     	    	});
     	    	
     	    	builder.setNegativeButton("I'm afraid!", new DialogInterface.OnClickListener(){

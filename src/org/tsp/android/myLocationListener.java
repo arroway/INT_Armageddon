@@ -7,6 +7,7 @@ import com.google.android.maps.OverlayItem;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class myLocationListener implements LocationListener {
 
 	private MapArmageddonActivity mContext;
 	private MyItemizedOverlay mImages;
+	private MyPathItemizedOverlay pathImages;
 	
 	private boolean clue_discover_1 = false;
 	private boolean clue_discover_2 = false;
@@ -23,18 +25,22 @@ public class myLocationListener implements LocationListener {
 	private boolean clue_discover_4 = false;
 	private boolean clue_discover_5 = false;
 
+	private Drawable iconPath;
 	
-	public myLocationListener(MapArmageddonActivity activity, MyItemizedOverlay images){
+	public myLocationListener(MapArmageddonActivity activity, MyItemizedOverlay images, MyPathItemizedOverlay pImages){
 		mContext = activity;
 		mImages = images;
+		pathImages = pImages;
+		
 	}
 
 	@Override
 	public void onLocationChanged(Location location) {
 		mContext.setLat( (int) (location.getLatitude() * 1000000));
 		mContext.setLng( (int) (location.getLongitude() *1000000));
-		Toast.makeText(mContext, "Longitude: " + mContext.getLng() + " - Latitude: " + mContext.getLat(),
-				Toast.LENGTH_SHORT).show();
+		//Toast.makeText(mContext, "Longitude: " + mContext.getLng() + " - Latitude: " + mContext.getLat(),
+	    //			Toast.LENGTH_SHORT).show();
+		
 		
 		/*
 		 * Display the clues 
@@ -53,7 +59,7 @@ public class myLocationListener implements LocationListener {
     				Toast.LENGTH_SHORT).show();
     		clue_discover_1 = true;
 			mContext.incrementScore();
-        }
+        } else 
         
         if( (mContext.getLng() > 48625400) &&
             (mContext.getLng() < 48625600) &&
@@ -68,7 +74,7 @@ public class myLocationListener implements LocationListener {
     		clue_discover_2 = true;
 			mContext.incrementScore();
 
-         }
+         } else
         
         if( (mContext.getLng() > 48625200) &&
             (mContext.getLng() < 48625400) &&
@@ -83,7 +89,7 @@ public class myLocationListener implements LocationListener {
     		clue_discover_3 = true;
 			mContext.incrementScore();
 
-         }
+         } else
             
          if( (mContext.getLng() > 48625200) &&
              (mContext.getLng() < 48625400) &&
@@ -98,7 +104,7 @@ public class myLocationListener implements LocationListener {
     		clue_discover_4 = true;
 			mContext.incrementScore();
 
-         }  
+         } else
          
          if( (mContext.getLng() > 48625800) &&
              (mContext.getLng() < 4862600) &&
@@ -112,7 +118,7 @@ public class myLocationListener implements LocationListener {
                 			Toast.LENGTH_SHORT).show();  
     		clue_discover_5 = true;
 			mContext.incrementScore();
-            }   
+            }  else 
          
          /*
           * Display final activity 
@@ -129,7 +135,14 @@ public class myLocationListener implements LocationListener {
 		    // mContext.startActivityForResult(intentEnigma, 1);
 
            
-          } 
+          } else {
+        	    
+        	iconPath = mContext.getResources().getDrawable(R.drawable.sphere);
+      		iconPath.setBounds(0, 0, iconPath.getIntrinsicWidth(), iconPath.getIntrinsicHeight());  
+        	OverlayItem itemPath = new OverlayItem(new GeoPoint(mContext.getLng(), mContext.getLat()), "position", "position udpated");
+      		itemPath.setMarker(iconPath);
+      		pathImages.addOverlay(itemPath);
+          }
 
 	}
 
