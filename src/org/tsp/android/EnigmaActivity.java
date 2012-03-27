@@ -25,7 +25,7 @@ public class EnigmaActivity extends Activity {
 		EditText inputText = (EditText) findViewById(R.id.editText1);
 		TextView winText = (TextView) findViewById(R.id.winText);
 
-		if (inputText.getText().toString().matches("answer")){
+		if (inputText.getText().toString().matches("Endor")){
 			winText.setText("Congratulations !");
 		} else {			
 			winText.setText(":(");

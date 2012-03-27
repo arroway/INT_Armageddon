@@ -22,8 +22,7 @@ public class myLocationListener implements LocationListener {
 	private boolean clue_discover_1 = false;
 	private boolean clue_discover_2 = false;
 	private boolean clue_discover_3 = false;
-	private boolean clue_discover_4 = false;
-	private boolean clue_discover_5 = false;
+
 
 	private Drawable iconPath;
 	
@@ -38,8 +37,8 @@ public class myLocationListener implements LocationListener {
 	public void onLocationChanged(Location location) {
 		mContext.setLat( (int) (location.getLatitude() * 1000000));
 		mContext.setLng( (int) (location.getLongitude() *1000000));
-		//Toast.makeText(mContext, "Longitude: " + mContext.getLng() + " - Latitude: " + mContext.getLat(),
-	    //			Toast.LENGTH_SHORT).show();
+		Toast.makeText(mContext, "Longitude: " + mContext.getLng() + " - Latitude: " + mContext.getLat(),
+	    			Toast.LENGTH_SHORT).show();
 		
 		
 		/*
@@ -67,7 +66,7 @@ public class myLocationListener implements LocationListener {
            ( mContext.getLat() < 2442582) &&
            !clue_discover_2 ){
             	
-            OverlayItem itemClue2 = new OverlayItem(new GeoPoint(4862500, 2442482), "First clue", "View first clue");
+            OverlayItem itemClue2 = new OverlayItem(new GeoPoint(48625500, 2442482), "First clue", "View first clue");
             mImages.addOverlay(itemClue2);
         	Toast.makeText(mContext, "You are now near a new clue. Click on the map to make it appear.",
         			Toast.LENGTH_SHORT).show(); 
@@ -89,36 +88,7 @@ public class myLocationListener implements LocationListener {
     		clue_discover_3 = true;
 			mContext.incrementScore();
 
-         } else
-            
-         if( (mContext.getLng() > 48625200) &&
-             (mContext.getLng() < 48625400) &&
-             (mContext.getLat() > 2442082) &&
-             (mContext.getLat() < 2442282) &&
-             !clue_discover_4 ){
-                	
-            OverlayItem itemClue4 = new OverlayItem(new GeoPoint(48625300, 2442182), "First clue", "View first clue");
-            mImages.addOverlay(itemClue4);
-           	Toast.makeText(mContext, "You are now near a new clue. Click on the map to make it appear.",
-            			Toast.LENGTH_SHORT).show(); 
-    		clue_discover_4 = true;
-			mContext.incrementScore();
-
-         } else
-         
-         if( (mContext.getLng() > 48625800) &&
-             (mContext.getLng() < 4862600) &&
-             (mContext.getLat() > 2442782) &&
-             (mContext.getLat() < 2442982) &&
-             !clue_discover_5 ){
-                    	
-            OverlayItem itemClue5 = new OverlayItem(new GeoPoint(48625900, 2442882), "First clue", "View first clue");
-            mImages.addOverlay(itemClue5);
-           	Toast.makeText(mContext, "You are now near a new clue. Click on the map to make it appear.",
-                			Toast.LENGTH_SHORT).show();  
-    		clue_discover_5 = true;
-			mContext.incrementScore();
-            }  else 
+         } else 
          
          /*
           * Display final activity 
@@ -131,18 +101,18 @@ public class myLocationListener implements LocationListener {
              (mContext.getLat() < 2441182) &&
              mContext.getFinalEnigma() ){
                         	
-            // Intent intentEnigma = new Intent(mContext, EnigmaActivity.class);
-		    // mContext.startActivityForResult(intentEnigma, 1);
+             //Intent intentEnigma = new Intent(mContext, EnigmaActivity.class);
+		     //mContext.startActivityForResult(intentEnigma, 1);
 
            
-          } else {
+          } /*else {
         	    
         	iconPath = mContext.getResources().getDrawable(R.drawable.sphere);
       		iconPath.setBounds(0, 0, iconPath.getIntrinsicWidth(), iconPath.getIntrinsicHeight());  
         	OverlayItem itemPath = new OverlayItem(new GeoPoint(mContext.getLng(), mContext.getLat()), "position", "position udpated");
       		itemPath.setMarker(iconPath);
       		pathImages.addOverlay(itemPath);
-          }
+          }*/
 
 	}
 

@@ -48,7 +48,6 @@ public class MapArmageddonActivity extends MapActivity {
 	private int lat;
 	private int lng;
 	
-	//private int score = 5;
 	private int score = 0;
 	private boolean finalEnigma = false;
 
@@ -74,9 +73,9 @@ public class MapArmageddonActivity extends MapActivity {
         images.addOverlay(itemMission);
         Toast.makeText(this, "Click on the blue item to discover your mission", Toast.LENGTH_LONG).show();
     
-        pathImages = new MyPathItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
+        /*pathImages = new MyPathItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(pathImages);
-        
+        */
         myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         myLocationListener = new myLocationListener(this, images, pathImages);
 		Criteria criteria = new Criteria();
@@ -106,7 +105,7 @@ public class MapArmageddonActivity extends MapActivity {
          * Display only when all the clues have been found
          */
          
-		if (this.score == 5){			
+		if (this.score == 3){			
 			Drawable iconFinal = getResources().getDrawable(R.drawable.stargate);
 			iconFinal.setBounds(0, 0, iconFinal.getIntrinsicWidth(), iconFinal.getIntrinsicHeight());
 			OverlayItem itemFinal = new OverlayItem(new GeoPoint(48627000, 2441082), "First clue", "View first clue");
@@ -116,37 +115,6 @@ public class MapArmageddonActivity extends MapActivity {
 	    	this.finalEnigma = true;
 	    	
 		}
-           
-    /*    File dir = new File(search_path);
-        String[] image_files = dir.list(new FilenameFilter() {
-		
-			@Override
-			public boolean accept(File dir, String filename) {
-				if (filename.endsWith(".jpg"))
-					return true;
-				return false;
-			}
-		});
-
-       for (String name : image_files) {
-            ExifInterface itf;
-    		try {
-    			itf = new ExifInterface(search_path+name);
-    			float[] latLng = new float[2];
-    			if ( !itf.getLatLong(latLng) )
-    				continue;
-    			OverlayItem image_item = new OverlayItem(new GeoPoint((int)(latLng[0]*1000000), (int)(latLng[1]*1000000)), name, search_path+name);
-    			Bitmap bmp = BitmapFactory.decodeFile(search_path+name);
-    			bmp = Bitmap.createScaledBitmap(bmp, 100, 100, true);
-    			BitmapDrawable bmpd = new BitmapDrawable(bmp);
-    			bmpd.setBounds(0, 0, bmpd.getIntrinsicWidth(), bmpd.getIntrinsicWidth());
-    			image_item.setMarker(images.fixMarkerImage(bmpd));
-    			images.addOverlay(image_item);
-    		} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		} 
-		}*/
     }
 
     

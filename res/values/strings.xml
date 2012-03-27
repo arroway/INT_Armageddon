@@ -9,11 +9,10 @@
     <string name="menu_exit">Exit</string>
     
     <!-- Clues --> 
-    <string name="clue1">This is the first clue</string>
-    <string name="clue2">This is the second clue</string>
-    <string name="clue3">This is the third clue</string>
-    <string name="clue4">This is the forth clue</string>    
-    <string name="clue5">This is the fifth clue</string>    
+    <string name="clue1">Clue 1: Tana</string>
+    <string name="clue2">Clue 2: Seek refuge on a forest moon.</string>
+    <string name="clue3">Clue 3: Nice picture of a little creature</string>
+   
     
     <string name="check">Check</string>
     <string name="win">Win</string>

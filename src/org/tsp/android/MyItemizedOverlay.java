@@ -18,14 +18,10 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     private MapArmageddonActivity mContext; 
     
     private static final int START_MISSION_DIALOG = 0;
-    //private static final int VIEW_CLUE_1 = 6;
     private static final int VIEW_CLUE_1 = 1;
     private static final int VIEW_CLUE_2 = 2;
     private static final int VIEW_CLUE_3 = 3;
-    private static final int VIEW_CLUE_4 = 4;
-    private static final int VIEW_CLUE_5 = 5;
-    //private static final int FINAL = 1;
-    private static final int FINAL = 6;
+    private static final int FINAL = 4;
 
 
 
@@ -123,7 +119,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     			
     	    	alert = builder.create();
 
-    			String clueStr_1 = "This is the first clue";
+    			String clueStr_1 = "Do you know about Tana?";
     			alert.setTitle("First clue");
     			alert.setMessage(clueStr_1);
     			alert.show();
@@ -138,7 +134,7 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     			
     	    	alert = builder.create();
 
-    			String clueStr_2 = "This is the second clue";
+    			String clueStr_2 = "Seek refuge on a forest moon.";
     			alert.setTitle("Second clue");
     			alert.setMessage(clueStr_2);
     			alert.show();
@@ -153,41 +149,14 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     			
     	    	alert = builder.create();
 
-    			String clueStr_3 = "This is the third clue";
+    			//String clueStr_3 = "This is the third clue";
     			alert.setTitle("Third clue");
-    			alert.setMessage(clueStr_3);
+    			ImageView image2 = new ImageView(mContext);
+    			image2.setImageResource(R.drawable.ewok);
+    			alert.setView(image2);
+    			//alert.setMessage(clueStr_3);
     			alert.show();
     			return (true);
-    			
-    		case VIEW_CLUE_4:
-    			
-    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
-    	            public void onClick(DialogInterface alert, int id) {
-    	            alert.dismiss();}
-    	    	});
-    			
-    	    	alert = builder.create();
-
-    			String clueStr_4 = "This is the fourth clue";
-    			alert.setTitle("Fourth clue");
-    			alert.setMessage(clueStr_4);
-    			alert.show();
-    			return (true);		
-    			
-    		case VIEW_CLUE_5:
-    			
-    			builder.setPositiveButton("I found it, I'm even better than Carter!", new DialogInterface.OnClickListener(){
-    	            public void onClick(DialogInterface alert, int id) {
-    	            alert.dismiss();}
-    	    	});
-    			
-    	    	alert = builder.create();
-
-    			String clueStr_5 = "This is the fifth clue";
-    			alert.setTitle("Fifth clue");
-    			alert.setMessage(clueStr_5);
-    			alert.show();
-    			return (true);    
     			
     		case FINAL:
     			
