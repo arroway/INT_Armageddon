@@ -73,9 +73,9 @@ public class MapArmageddonActivity extends MapActivity {
         images.addOverlay(itemMission);
         Toast.makeText(this, "Click on the blue item to discover your mission", Toast.LENGTH_LONG).show();
     
-        /*pathImages = new MyPathItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
+        pathImages = new MyPathItemizedOverlay(this, getResources().getDrawable(R.drawable.blue_dot));
         map_overlays.add(pathImages);
-        */
+        
         myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         myLocationListener = new myLocationListener(this, images, pathImages);
 		Criteria criteria = new Criteria();

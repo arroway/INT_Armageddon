@@ -170,7 +170,6 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	        		public void onClick(DialogInterface alert, int id) {
     	                    Intent intentEnigma = new Intent(mContext, EnigmaActivity.class);
     	       		        mContext.startActivityForResult(intentEnigma, 1);
-    	        		//	alert.dismiss();
     	        		}
     	        	});
     				

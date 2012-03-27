@@ -14,13 +14,13 @@ import com.google.android.maps.OverlayItem;
 
 public class MyPathItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         
-    private ArrayList<OverlayItem> myOverlays;
+    private ArrayList<OverlayItem> myPathOverlays;
     private MapArmageddonActivity mContext; 
 
     public MyPathItemizedOverlay(MapArmageddonActivity context, Drawable defaultMarker) {
         super(boundCenterBottom(defaultMarker));
         mContext = context;
-        myOverlays = new ArrayList<OverlayItem>();
+        myPathOverlays = new ArrayList<OverlayItem>();
         populate();
     }
     
@@ -30,7 +30,7 @@ public class MyPathItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     }
         
     public void addOverlay(OverlayItem overlay){
-        myOverlays.add(overlay);
+        myPathOverlays.add(overlay);
         setLastFocusedIndex(-1);
         populate();
     }
@@ -39,7 +39,7 @@ public class MyPathItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     protected OverlayItem createItem(int i) {
     	if ( i >= size() )
     		return null;
-        return myOverlays.get(i);
+        return myPathOverlays.get(i);
     }
         
     // Removes overlay item i
@@ -47,7 +47,7 @@ public class MyPathItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     	if ( i >= size() )
     		return;
     	setLastFocusedIndex(-1);
-        myOverlays.remove(i);
+        myPathOverlays.remove(i);
         populate();
     }
         
@@ -60,6 +60,6 @@ public class MyPathItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     // Returns present number of items in list
     @Override
     public int size() {
-        return myOverlays.size();
+        return myPathOverlays.size();
     }
 }

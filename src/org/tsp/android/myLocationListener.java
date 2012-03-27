@@ -88,31 +88,14 @@ public class myLocationListener implements LocationListener {
     		clue_discover_3 = true;
 			mContext.incrementScore();
 
-         } else 
-         
-         /*
-          * Display final activity 
-          *
-          */
-         
-         if( (mContext.getLng() > 48626950) &&
-             (mContext.getLng() < 48627050) &&
-             (mContext.getLat() > 2440100) &&
-             (mContext.getLat() < 2441182) &&
-             mContext.getFinalEnigma() ){
-                        	
-             //Intent intentEnigma = new Intent(mContext, EnigmaActivity.class);
-		     //mContext.startActivityForResult(intentEnigma, 1);
-
-           
-          } /*else {
+         } else {
         	    
         	iconPath = mContext.getResources().getDrawable(R.drawable.sphere);
       		iconPath.setBounds(0, 0, iconPath.getIntrinsicWidth(), iconPath.getIntrinsicHeight());  
         	OverlayItem itemPath = new OverlayItem(new GeoPoint(mContext.getLng(), mContext.getLat()), "position", "position udpated");
       		itemPath.setMarker(iconPath);
       		pathImages.addOverlay(itemPath);
-          }*/
+          }
 
 	}
 
